@@ -34,7 +34,7 @@ public class AWSCamelRoute extends RouteBuilder {
       .routeId("SNS-Poll")
       .to("aws2-sns://test.fifo?amazonSNSClient=#awsSNSClient");
 
-    from("aws2-sqs://test-fifo?amazonSQSClient=#awsSQSClient&delay=50&maxMessagesPerPoll=5")
+    from("aws2-sqs://test.fifo?amazonSQSClient=#awsSQSClient&delay=50&maxMessagesPerPoll=5")
       .routeId("SQS-client")
       .to("stream:out");
 
