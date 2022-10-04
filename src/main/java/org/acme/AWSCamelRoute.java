@@ -35,8 +35,8 @@ public class AWSCamelRoute extends RouteBuilder {
 
 
 
-    from("aws2-sqs://test-camel?amazonSQSClient=#awsSQSClient&delay=50&maxMessagesPerPoll=5")
-      .to("steam:out");
+    from("aws2-sqs://test?amazonSQSClient=#awsSQSClient&delay=50&maxMessagesPerPoll=5")
+      .to("stream:out");
   }
 
 }
