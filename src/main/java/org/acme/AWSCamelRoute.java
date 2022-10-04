@@ -31,7 +31,7 @@ public class AWSCamelRoute extends RouteBuilder {
   public void configure() throws Exception {
     
     from("direct:start")
-      .to("aws2-sns://test?amazonSNSClient=#awsSNSClient&subscribeSNStoSQS=true&queueUrl=https://sqs.us-east-1.amazonaws.com/322554347870/test");
+      .to("aws2-sns://test?amazonSNSClient=#awsSNSClient&subscribeSNStoSQS=true&queueUrl=arn:aws:sqs:us-east-1:322554347870:test");
 
 
 
