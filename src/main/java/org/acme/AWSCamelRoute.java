@@ -30,12 +30,12 @@ public class AWSCamelRoute extends RouteBuilder {
   @Override
   public void configure() throws Exception {
     
-    from("direct:start")
+    string output = rom("direct:start")
       .to("aws2-sns://test?amazonSNSClient=#awsSNSClient&subscribeSNStoSQS=true&queueUrl=arn:aws:sqs:us-east-1:322554347870:test");
+    
 
 
-
-    from("aws2-sqs://test?amazonSQSClient=#awsSQSClient&delay=50&maxMessagesPerPoll=5")
+    from("aws2-sqs://test?amazonSQSClient=#awsSQSClient&delay=50&maxMessagesPerPoll=5&deleteAfterRead=false")
       .to("stream:out");
   }
 
