@@ -15,11 +15,11 @@ import software.amazon.awssdk.services.sqs.SqsClient;
 public class AWSCamelRoute extends RouteBuilder {
     
 
-  @Produces 
-  @Named("awsSNSClient")
-   public SnsClient createSnsClient() {
-    return SnsClient.create();
-  }
+  //@Produces 
+  //@Named("awsSNSClient")
+   //public SnsClient createSnsClient() {
+  //  return SnsClient.create();
+  //}
 
   @Produces 
   @Named("awsSQSClient")
@@ -27,12 +27,12 @@ public class AWSCamelRoute extends RouteBuilder {
     return SqsClient.create();
   }
   
-    @Override
+  @Override
   public void configure() throws Exception {
     
-    from("direct:start")
-      .routeId("SNS-Poll")
-      .to("aws2-sns://test.fifo?amazonSNSClient=#awsSNSClient");
+    //from("direct:start")
+    //  .routeId("SNS-Poll")
+    //  .to("aws2-sns://test.fifo?amazonSNSClient=#awsSNSClient");
 
     from("aws2-sqs://test.fifo?amazonSQSClient=#awsSQSClient&delay=50&maxMessagesPerPoll=5")
       .routeId("SQS-client")
